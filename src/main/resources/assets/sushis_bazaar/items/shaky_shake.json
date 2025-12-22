@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "sushis_bazaar:item/shaky_shake",
+    "tints": [
+      {
+        "type": "minecraft:potion",
+        "default": 16551892
+      }
+    ]
+  }
+}

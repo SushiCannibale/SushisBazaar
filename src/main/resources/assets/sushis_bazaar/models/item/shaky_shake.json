@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "sushis_bazaar:item/shaky_shake_overlay",
+    "layer1": "sushis_bazaar:item/shaky_shake"
+  }
+}
