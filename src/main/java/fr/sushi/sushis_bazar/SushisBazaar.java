@@ -1,6 +1,7 @@
 package fr.sushi.sushis_bazar;
 
 import com.mojang.logging.LogUtils;
+import fr.sushi.sushis_bazar.registries.ModEffects;
 import fr.sushi.sushis_bazar.registries.ModItems;
 import fr.sushi.sushis_bazar.registries.ModTabs;
 import net.neoforged.bus.api.IEventBus;
@@ -20,6 +21,7 @@ public class SushisBazaar
 	{
 		ModItems.ITEM_REGISTRY.register(modEventBus);
 		ModTabs.CREATIVE_MODE_TABS.register(modEventBus);
+		ModEffects.MOB_EFFECTS.register(modEventBus);
 
 		modEventBus.register(ModEvents.class);
 //		NeoForge.EVENT_BUS.register(this);
