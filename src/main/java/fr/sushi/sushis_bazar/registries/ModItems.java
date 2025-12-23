@@ -1,11 +1,13 @@
 package fr.sushi.sushis_bazar.registries;
 
 import fr.sushi.sushis_bazar.SushisBazaar;
+import fr.sushi.sushis_bazar.effect.ThrowBrickConsumeEffect;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -40,4 +42,13 @@ public class ModItems
 																				   .build())
 																   .usingConvertsTo(
 																		   Items.GLASS_BOTTLE)));
+
+	public static final Supplier<Item> THROWABLE_BRICK =
+			ITEM_REGISTRY.registerItem("throwable_brick",
+									   (props) -> new Item(props.component(
+											   DataComponents.CONSUMABLE,
+											   Consumable
+													   .builder()
+													   .onConsume(new ThrowBrickConsumeEffect())
+													   .build())));
 }
