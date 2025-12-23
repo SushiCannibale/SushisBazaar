@@ -1,4 +1,4 @@
-package fr.sushi.sushis_bazar;
+package fr.sushi.sushis_bazaar;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;

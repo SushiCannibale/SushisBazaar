@@ -1,6 +1,6 @@
-package fr.sushi.sushis_bazar.client;
+package fr.sushi.sushis_bazaar.client;
 
-import fr.sushi.sushis_bazar.SushisBazaar;
+import fr.sushi.sushis_bazaar.SushisBazaar;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;

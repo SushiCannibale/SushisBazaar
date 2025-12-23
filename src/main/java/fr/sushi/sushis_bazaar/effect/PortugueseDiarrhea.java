@@ -1,4 +1,4 @@
-package fr.sushi.sushis_bazar.effect;
+package fr.sushi.sushis_bazaar.effect;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;

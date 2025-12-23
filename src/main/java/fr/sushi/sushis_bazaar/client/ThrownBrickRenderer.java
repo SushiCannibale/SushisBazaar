@@ -1,9 +1,9 @@
-package fr.sushi.sushis_bazar.client;
+package fr.sushi.sushis_bazaar.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import fr.sushi.sushis_bazar.SushisBazaar;
-import fr.sushi.sushis_bazar.entity.ThrownBrickEntity;
+import fr.sushi.sushis_bazaar.SushisBazaar;
+import fr.sushi.sushis_bazaar.entity.ThrownBrickEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

@@ -1,4 +1,4 @@
-package fr.sushi.sushis_bazar.client;
+package fr.sushi.sushis_bazaar.client;
 
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.neoforged.api.distmarker.Dist;

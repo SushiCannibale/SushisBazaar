@@ -1,7 +1,7 @@
-package fr.sushi.sushis_bazar.registries;
+package fr.sushi.sushis_bazaar.registries;
 
-import fr.sushi.sushis_bazar.SushisBazaar;
-import fr.sushi.sushis_bazar.effect.PortugueseDiarrhea;
+import fr.sushi.sushis_bazaar.SushisBazaar;
+import fr.sushi.sushis_bazaar.effect.PortugueseDiarrhea;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;

@@ -1,10 +1,10 @@
-package fr.sushi.sushis_bazar;
+package fr.sushi.sushis_bazaar;
 
 import com.mojang.logging.LogUtils;
-import fr.sushi.sushis_bazar.registries.ModEffects;
-import fr.sushi.sushis_bazar.registries.ModEntities;
-import fr.sushi.sushis_bazar.registries.ModItems;
-import fr.sushi.sushis_bazar.registries.ModTabs;
+import fr.sushi.sushis_bazaar.registries.ModEffects;
+import fr.sushi.sushis_bazaar.registries.ModEntities;
+import fr.sushi.sushis_bazaar.registries.ModItems;
+import fr.sushi.sushis_bazaar.registries.ModTabs;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;

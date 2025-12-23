@@ -1,6 +1,6 @@
-package fr.sushi.sushis_bazar.registries;
+package fr.sushi.sushis_bazaar.registries;
 
-import fr.sushi.sushis_bazar.SushisBazaar;
+import fr.sushi.sushis_bazaar.SushisBazaar;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
