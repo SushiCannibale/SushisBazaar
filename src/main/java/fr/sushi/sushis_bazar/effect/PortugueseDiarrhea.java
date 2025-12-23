@@ -30,15 +30,14 @@ public class PortugueseDiarrhea extends MobEffect
 		brickEntity.setPos(entity.position());
 		brickEntity.setPickUpDelay(16);
 		level.addFreshEntity(brickEntity);
-		level.playSeededSound(entity,
+		level.playSound(entity,
 							  entity.getX(),
 							  entity.getY(),
 							  entity.getZ(),
 							  SoundEvents.MUD_PLACE,
 							  SoundSource.PLAYERS,
 							  100.0f,
-							  0.0f,
-							  0);
+							  1.0f);
 		return true;
 	}
 
