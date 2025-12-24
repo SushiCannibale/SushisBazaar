@@ -14,7 +14,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
@@ -129,16 +128,13 @@ public class ThrowableBrickItem extends ProjectileWeaponItem
 			if (pLevel instanceof ServerLevel serverlevel && !pStack.isEmpty())
 			{
 				ThrownBrickEntity projectile =
-						new ThrownBrickEntity(serverlevel);
-				projectile.setPos(new Vec3(pEntity.getX(),
-										   pEntity.getEyeY() - 1.0f,
-										   pEntity.getZ()));
+						new ThrownBrickEntity(serverlevel, pEntity);
 				serverlevel.addFreshEntity(projectile);
 				projectile.shootFromRotation(pEntity,
 											 pEntity.getXRot(),
 											 pEntity.getYRot(),
 											 0.0f,
-											 15.0f,
+											 f,
 											 0.1f);
 			}
 
@@ -146,7 +142,7 @@ public class ThrowableBrickItem extends ProjectileWeaponItem
 							 pEntity.getX(),
 							 pEntity.getY(),
 							 pEntity.getZ(),
-							 SoundEvents.ARROW_SHOOT,
+							 SoundEvents.MUD_BRICKS_HIT,
 							 SoundSource.PLAYERS,
 							 1.0F,
 							 1.0F /
