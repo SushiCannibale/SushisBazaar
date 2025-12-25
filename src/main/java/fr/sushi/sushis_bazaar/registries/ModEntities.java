@@ -17,5 +17,6 @@ public class ModEntities
 			THROWN_BRICK_ENTITY = ENTITY_REGISTRY.registerEntityType(
 			"thrown_brick_entity",
 			ThrownBrickEntity::new,
-			MobCategory.MISC);
+			MobCategory.MISC,
+			(builder) -> builder.sized(0.75F, 0.5F));
 }
