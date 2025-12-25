@@ -18,5 +18,5 @@ public class ModEntities
 			"thrown_brick_entity",
 			ThrownBrickEntity::new,
 			MobCategory.MISC,
-			(builder) -> builder.sized(0.75F, 0.5F));
+			(builder) -> builder.sized(0.5F, 0.5F));
 }
