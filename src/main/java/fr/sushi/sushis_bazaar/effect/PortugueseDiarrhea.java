@@ -1,5 +1,6 @@
 package fr.sushi.sushis_bazaar.effect;
 
+import fr.sushi.sushis_bazaar.registries.ModItems;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -26,18 +27,18 @@ public class PortugueseDiarrhea extends MobEffect
 								   int amplifier)
 	{
 		ItemEntity brickEntity = new ItemEntity(EntityType.ITEM, level);
-		brickEntity.setItem(new ItemStack(Items.BRICK));
+		brickEntity.setItem(new ItemStack(ModItems.THROWABLE_BRICK.get()));
 		brickEntity.setPos(entity.position());
 		brickEntity.setPickUpDelay(16);
 		level.addFreshEntity(brickEntity);
-		level.playSound(entity,
-							  entity.getX(),
-							  entity.getY(),
-							  entity.getZ(),
-							  SoundEvents.MUD_PLACE,
-							  SoundSource.PLAYERS,
-							  100.0f,
-							  1.0f);
+		level.playSound(null,
+						entity.getX(),
+						entity.getY(),
+						entity.getZ(),
+						SoundEvents.MUD_PLACE,
+						SoundSource.PLAYERS,
+						1.0f,
+						0.0f);
 		return true;
 	}
 
