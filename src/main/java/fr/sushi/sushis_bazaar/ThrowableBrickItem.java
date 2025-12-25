@@ -62,7 +62,7 @@ public class ThrowableBrickItem extends ProjectileWeaponItem
 	@Override
 	public ItemUseAnimation getUseAnimation(ItemStack stack)
 	{
-		return ItemUseAnimation.BOW;
+		return ItemUseAnimation.SPEAR;
 	}
 
 	@Override
