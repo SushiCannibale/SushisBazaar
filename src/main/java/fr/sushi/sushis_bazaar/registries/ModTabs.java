@@ -16,19 +16,22 @@ public class ModTabs
 
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab>
 			SUSHIS_BAZAAR_TAB = CREATIVE_MODE_TABS.register("sushis_bazaar",
-													  () -> CreativeModeTab
-															  .builder()
-															  .title(Component.translatable(
-																	  "itemGroup.sushis_bazaar"))
-															  .withTabsBefore(
-																	  CreativeModeTabs.COMBAT)
-															  .icon(() -> ModItems.SHAKY_SHAKE
-																	  .get()
-																	  .getDefaultInstance())
-															  .displayItems((parameters, output) ->
+															() -> CreativeModeTab
+																	.builder()
+																	.title(Component.translatable(
+																			"itemGroup.sushis_bazaar"))
+																	.withTabsBefore(
+																			CreativeModeTabs.COMBAT)
+																	.icon(() -> ModItems.SHAKY_SHAKE
+																			.get()
+																			.getDefaultInstance())
+																	.displayItems(
+																			(parameters, output) ->
 																			{
 																				output.accept(
 																						ModItems.SHAKY_SHAKE.get());
+																				output.accept(
+																						ModItems.THROWABLE_BRICK.get());
 																			})
-															  .build());
+																	.build());
 }

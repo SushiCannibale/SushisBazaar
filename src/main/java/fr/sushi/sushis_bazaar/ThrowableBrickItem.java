@@ -137,6 +137,7 @@ public class ThrowableBrickItem extends ProjectileWeaponItem
 											 0.0f,
 											 f,
 											 0.1f);
+				pStack.consume(1, pEntity);
 			}
 
 			pLevel.playSound(null,
