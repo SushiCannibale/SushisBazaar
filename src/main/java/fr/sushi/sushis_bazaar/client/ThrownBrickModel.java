@@ -35,23 +35,15 @@ public class ThrownBrickModel extends EntityModel<ThrownBrickRenderState>
 												 .create()
 												 .texOffs(0, 0)
 												 .addBox(-3.0F,
-														 0.0F,
+														 -2.0F,
 														 -5.0F,
 														 6.0F,
 														 4.0F,
 														 10.0F,
 														 new CubeDeformation(
 																 0.0F)),
-										 PartPose.offset(0.0F, 2.0F, 0.0F));
+										 PartPose.offset(0.0F, 0.0F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 32, 32);
-	}
-
-	public void setupAnim(ThrownBrickRenderState renderState)
-	{
-		super.setupAnim(renderState);
-		this.bb_main.xRot = renderState.xRot;
-		this.bb_main.yRot = renderState.yRot;
-		this.bb_main.zRot = renderState.zRot;
 	}
 }

@@ -73,6 +73,7 @@ public class ThrowableBrickItem extends ProjectileWeaponItem
 		ItemStack itemstack = player.getItemInHand(hand);
 		boolean   flag      = !player.getProjectile(itemstack).isEmpty();
 
+		/* Replace this with its own event */
 		InteractionResult ret =
 				net.neoforged.neoforge.event.EventHooks.onArrowNock(itemstack,
 																	level,

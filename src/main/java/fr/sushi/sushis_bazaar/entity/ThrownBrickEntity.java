@@ -1,9 +1,11 @@
 package fr.sushi.sushis_bazaar.entity;
 
 import fr.sushi.sushis_bazaar.registries.ModEntities;
+import net.minecraft.Util;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.EntityType;
@@ -15,10 +17,15 @@ import net.minecraft.world.phys.HitResult;
 
 public class ThrownBrickEntity extends ThrowableProjectile
 {
+	private float zRot;
+	private float zRot0;
+
 	public ThrownBrickEntity(EntityType<? extends ThrownBrickEntity> entityType,
 							 Level level)
 	{
 		super(entityType, level);
+		this.zRot0 = 0;
+		this.zRot = 0;
 	}
 
 	public ThrownBrickEntity(Level level, LivingEntity pEntity)
@@ -28,17 +35,13 @@ public class ThrownBrickEntity extends ThrowableProjectile
 			  pEntity.getEyeY(),
 			  pEntity.getZ(),
 			  level);
+		this.zRot0 = 0;
+		this.zRot = (this.getRandom().nextFloat() - 0.5f) * 10.0f;
 	}
 
 	@Override
 	protected void defineSynchedData(SynchedEntityData.Builder builder)
 	{
-	}
-
-	private float calculateImpactDamage()
-	{
-		double velocity = this.getDeltaMovement().length();
-		return (float) velocity;
 	}
 
 	@Override
@@ -73,5 +76,47 @@ public class ThrownBrickEntity extends ThrowableProjectile
 						   SoundSource.AMBIENT,
 						   1.0f,
 						   0.0f);
+	}
+
+	@Override
+	public void tick()
+	{
+		super.tick();
+		if (this.isAlive())
+		{
+			this.zRot += 10f;
+		}
+	}
+
+	@Override
+	protected void updateRotation()
+	{
+		super.updateRotation();
+//		this.setXRot(this.xRotO);
+//		this.setZRot(lerpRotation(this.zRot0, Mth.atan2()));
+	}
+
+	private float calculateImpactDamage()
+	{
+		double velocity = this.getDeltaMovement().length();
+		return (float) velocity;
+	}
+
+	public float getZRot()
+	{
+		return this.zRot;
+	}
+
+	public void setZRot(float zRot)
+	{
+		if (!Float.isFinite(zRot))
+		{
+			Util.logAndPauseIfInIde(
+					"Invalid entity rotation: " + zRot + ", discarding.");
+		}
+		else
+		{
+			this.zRot = Math.clamp(zRot % 360.0F, -90.0F, 90.0F);
+		}
 	}
 }
