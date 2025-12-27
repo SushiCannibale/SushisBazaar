@@ -1,6 +1,7 @@
 package fr.sushi.sushis_bazaar.entity;
 
 import fr.sushi.sushis_bazaar.registries.ModEntities;
+import fr.sushi.sushis_bazaar.registries.ModTags;
 import net.minecraft.Util;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
@@ -18,6 +19,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
@@ -60,6 +63,7 @@ public class ThrownBrickEntity extends ThrowableProjectile
 			entity.hurtOrSimulate(source, dmg);
 		}
 		super.onHitEntity(result);
+		this.discard();
 	}
 
 	@Override
@@ -75,11 +79,23 @@ public class ThrownBrickEntity extends ThrowableProjectile
 							Blocks.BRICKS.defaultBlockState());
 			level.sendParticles(particle, this.getX(), this.getY(), this.getZ(),
 					20, 0.2D, 0.2D, 0.2D, 0.15f);
-			this.discard();
 		}
 		this.level().playSound(null, this.getX(), this.getY(), this.getZ(),
 				SoundEvents.NETHER_BRICKS_BREAK, SoundSource.AMBIENT, 1.0f,
 				0.0f);
+	}
+
+	@Override
+	protected void onHitBlock(BlockHitResult result)
+	{
+		BlockState blockstate =
+				this.level().getBlockState(result.getBlockPos());
+		if (blockstate.is(ModTags.BREAKS_ON_BRICK_IMPACT))
+		{
+			this.level().destroyBlock(result.getBlockPos(), false);
+		} else {
+			this.discard();
+		}
 	}
 
 	@Override
