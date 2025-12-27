@@ -144,12 +144,10 @@ public class ThrowableBrickItem extends ProjectileWeaponItem
 							 pEntity.getX(),
 							 pEntity.getY(),
 							 pEntity.getZ(),
-							 SoundEvents.MUD_BRICKS_HIT,
+							 SoundEvents.MUD_BRICKS_PLACE,
 							 SoundSource.PLAYERS,
-							 1.0F,
-							 1.0F /
-							 (pLevel.getRandom().nextFloat() * 0.4F + 1.2F) +
-							 f * 0.5F);
+							 1.0f,
+							 0.0f);
 			return true;
 		}
 	}
