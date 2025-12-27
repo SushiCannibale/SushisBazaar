@@ -6,6 +6,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.EntityType;
@@ -17,8 +18,9 @@ import net.minecraft.world.phys.HitResult;
 
 public class ThrownBrickEntity extends ThrowableProjectile
 {
-	private float zRot;
-	private float zRot0;
+	private static final int   BASE_DMG = 6;
+	private              float zRot;
+	private              float zRot0;
 
 	public ThrownBrickEntity(EntityType<? extends ThrownBrickEntity> entityType,
 							 Level level)
@@ -49,10 +51,11 @@ public class ThrownBrickEntity extends ThrowableProjectile
 	{
 		if (!this.level().isClientSide())
 		{
-			double force  = this.calculateImpactDamage();
+			int    dmg    = this.calculateImpactDamage();
 			Entity entity = result.getEntity();
-			entity.hurt(this.damageSources().thrown(this, this.getOwner()),
-						(float) force);
+			DamageSource source =
+					this.damageSources().thrown(this, this.getOwner());
+			entity.hurtOrSimulate(source, dmg);
 		}
 		super.onHitEntity(result);
 	}
@@ -92,14 +95,14 @@ public class ThrownBrickEntity extends ThrowableProjectile
 	protected void updateRotation()
 	{
 		super.updateRotation();
-//		this.setXRot(this.xRotO);
-//		this.setZRot(lerpRotation(this.zRot0, Mth.atan2()));
+		//		this.setXRot(this.xRotO);
+		//		this.setZRot(lerpRotation(this.zRot0, Mth.atan2()));
 	}
 
-	private float calculateImpactDamage()
+	private int calculateImpactDamage()
 	{
 		double velocity = this.getDeltaMovement().length();
-		return (float) velocity;
+		return Mth.ceil(velocity * BASE_DMG);
 	}
 
 	public float getZRot()
