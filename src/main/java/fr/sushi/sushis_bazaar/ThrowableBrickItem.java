@@ -43,13 +43,9 @@ public class ThrowableBrickItem extends ProjectileWeaponItem
 	 * mojang
 	 */
 	@Override
-	protected void shootProjectile(LivingEntity shooter,
-								   Projectile projectile,
-								   int index,
-								   float velocity,
-								   float inaccuracy,
-								   float angle,
-								   @Nullable LivingEntity target)
+	protected void shootProjectile(LivingEntity shooter, Projectile projectile,
+			int index, float velocity, float inaccuracy, float angle,
+			@Nullable LivingEntity target)
 	{
 	}
 
@@ -66,9 +62,8 @@ public class ThrowableBrickItem extends ProjectileWeaponItem
 	}
 
 	@Override
-	public InteractionResult use(Level level,
-								 Player player,
-								 InteractionHand hand)
+	public InteractionResult use(Level level, Player player,
+			InteractionHand hand)
 	{
 		ItemStack itemstack = player.getItemInHand(hand);
 		boolean   flag      = !player.getProjectile(itemstack).isEmpty();
@@ -76,10 +71,7 @@ public class ThrowableBrickItem extends ProjectileWeaponItem
 		/* Replace this with its own event */
 		InteractionResult ret =
 				net.neoforged.neoforge.event.EventHooks.onArrowNock(itemstack,
-																	level,
-																	player,
-																	hand,
-																	flag);
+						level, player, hand, flag);
 		if (ret != null)
 		{
 			return ret;
@@ -109,10 +101,8 @@ public class ThrowableBrickItem extends ProjectileWeaponItem
 	}
 
 	@Override
-	public boolean releaseUsing(ItemStack pStack,
-								Level pLevel,
-								LivingEntity pEntity,
-								int pTime)
+	public boolean releaseUsing(ItemStack pStack, Level pLevel,
+			LivingEntity pEntity, int pTime)
 	{
 		int i = this.getUseDuration(pStack, pEntity) - pTime;
 		if (i < 0)
@@ -131,23 +121,14 @@ public class ThrowableBrickItem extends ProjectileWeaponItem
 				ThrownBrickEntity projectile =
 						new ThrownBrickEntity(serverlevel, pEntity);
 				serverlevel.addFreshEntity(projectile);
-				projectile.shootFromRotation(pEntity,
-											 pEntity.getXRot(),
-											 pEntity.getYRot(),
-											 0.0f,
-											 f,
-											 0.1f);
+				projectile.shootFromRotation(pEntity, pEntity.getXRot(),
+						pEntity.getYRot(), 0.0f, f, 0.1f);
 				pStack.consume(1, pEntity);
 			}
 
-			pLevel.playSound(null,
-							 pEntity.getX(),
-							 pEntity.getY(),
-							 pEntity.getZ(),
-							 SoundEvents.MUD_BRICKS_PLACE,
-							 SoundSource.PLAYERS,
-							 1.0f,
-							 0.0f);
+			pLevel.playSound(null, pEntity.getX(), pEntity.getY(),
+					pEntity.getZ(), SoundEvents.MUD_BRICKS_PLACE,
+					SoundSource.PLAYERS, 1.0f, 0.0f);
 			return true;
 		}
 	}

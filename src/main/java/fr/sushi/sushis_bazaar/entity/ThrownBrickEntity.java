@@ -28,7 +28,7 @@ public class ThrownBrickEntity extends ThrowableProjectile
 	private              float zRot0;
 
 	public ThrownBrickEntity(EntityType<? extends ThrownBrickEntity> entityType,
-							 Level level)
+			Level level)
 	{
 		super(entityType, level);
 		this.zRot0 = 0;
@@ -37,11 +37,8 @@ public class ThrownBrickEntity extends ThrowableProjectile
 
 	public ThrownBrickEntity(Level level, LivingEntity pEntity)
 	{
-		super(ModEntities.THROWN_BRICK_ENTITY.get(),
-			  pEntity.getX(),
-			  pEntity.getEyeY(),
-			  pEntity.getZ(),
-			  level);
+		super(ModEntities.THROWN_BRICK_ENTITY.get(), pEntity.getX(),
+				pEntity.getEyeY(), pEntity.getZ(), level);
 		this.zRot0 = 0;
 		this.zRot = (this.getRandom().nextFloat() - 0.5f) * 10.0f;
 	}
@@ -75,28 +72,14 @@ public class ThrownBrickEntity extends ThrowableProjectile
 			level.broadcastEntityEvent(this, EntityEvent.DEATH);
 			ParticleOptions particle =
 					new BlockParticleOption(ParticleTypes.BLOCK,
-											Blocks.BRICKS.defaultBlockState());
-			level.sendParticles(particle,
-								this.getX(),
-								this.getY(),
-								this.getZ(),
-								20,
-								0.2D,
-								0.2D,
-								0.2D,
-								0.15f);
+							Blocks.BRICKS.defaultBlockState());
+			level.sendParticles(particle, this.getX(), this.getY(), this.getZ(),
+					20, 0.2D, 0.2D, 0.2D, 0.15f);
 			this.discard();
 		}
-		this
-				.level()
-				.playSound(null,
-						   this.getX(),
-						   this.getY(),
-						   this.getZ(),
-						   SoundEvents.NETHER_BRICKS_BREAK,
-						   SoundSource.AMBIENT,
-						   1.0f,
-						   0.0f);
+		this.level().playSound(null, this.getX(), this.getY(), this.getZ(),
+				SoundEvents.NETHER_BRICKS_BREAK, SoundSource.AMBIENT, 1.0f,
+				0.0f);
 	}
 
 	@Override

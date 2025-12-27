@@ -14,9 +14,9 @@ import net.neoforged.api.distmarker.OnlyIn;
 public class ThrownBrickModel extends EntityModel<ThrownBrickRenderState>
 {
 	public static final ModelLayerLocation LAYER_LOCATION =
-			new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(
-					SushisBazaar.MODID,
-					"thrown_brick_model"), "main");
+			new ModelLayerLocation(
+					ResourceLocation.fromNamespaceAndPath(SushisBazaar.MODID,
+							"thrown_brick_model"), "main");
 	private final       ModelPart          bb_main;
 
 	public ThrownBrickModel(ModelPart root)
@@ -31,21 +31,11 @@ public class ThrownBrickModel extends EntityModel<ThrownBrickRenderState>
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
 		partdefinition.addOrReplaceChild("bb_main",
-										 CubeListBuilder
-												 .create()
-												 .texOffs(0, 0)
-												 .addBox(-3.0F,
-														 -2.0F,
-														 -5.0F,
-														 6.0F,
-														 4.0F,
-														 10.0F,
-														 new CubeDeformation(
-																 0.0F)),
-										 PartPose.offset(0.0F, 0.0F, 0.0F));
+				CubeListBuilder.create().texOffs(0, 0)
+						.addBox(-3.0F, -2.0F, -5.0F, 6.0F, 4.0F, 10.0F,
+								new CubeDeformation(0.0F)),
+				PartPose.offset(0.0F, 0.0F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 32, 32);
 	}
-
-
 }

@@ -14,9 +14,8 @@ public class ModEntities
 			DeferredRegister.createEntities(SushisBazaar.MODID);
 
 	public static final Supplier<EntityType<ThrownBrickEntity>>
-			THROWN_BRICK_ENTITY = ENTITY_REGISTRY.registerEntityType(
-			"thrown_brick_entity",
-			ThrownBrickEntity::new,
-			MobCategory.MISC,
-			(builder) -> builder.sized(0.5F, 0.5F));
+			THROWN_BRICK_ENTITY =
+			ENTITY_REGISTRY.registerEntityType("thrown_brick_entity",
+					ThrownBrickEntity::new, MobCategory.MISC,
+					(builder) -> builder.sized(0.5F, 0.5F));
 }

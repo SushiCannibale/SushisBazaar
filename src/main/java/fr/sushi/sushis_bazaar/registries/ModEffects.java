@@ -18,12 +18,11 @@ public class ModEffects
 
 	public static final Holder<MobEffect> PORTUGUESE_DIARRHEA =
 			MOB_EFFECTS.register("portuguese_diarrhea",
-								 () -> new PortugueseDiarrhea(MobEffectCategory.NEUTRAL,
-															  16551892).addAttributeModifier(
-										 Attributes.MOVEMENT_SPEED,
-										 ResourceLocation.fromNamespaceAndPath(
-												 SushisBazaar.MODID,
-												 "effect.portuguese_diarrhea"),
-										 0.15D,
-										 AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+					() -> new PortugueseDiarrhea(MobEffectCategory.NEUTRAL,
+							16551892).addAttributeModifier(
+							Attributes.MOVEMENT_SPEED,
+							ResourceLocation.fromNamespaceAndPath(
+									SushisBazaar.MODID,
+									"effect.portuguese_diarrhea"), 0.15D,
+							AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 }

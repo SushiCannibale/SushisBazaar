@@ -20,20 +20,18 @@ public class ThrownBrickRenderer
 	public final         ThrownBrickModel model;
 	private static final ResourceLocation TEXTURE =
 			ResourceLocation.fromNamespaceAndPath(SushisBazaar.MODID,
-												  "textures/entity/thrown_brick.png");
+					"textures/entity/thrown_brick.png");
 
 	public ThrownBrickRenderer(EntityRendererProvider.Context context)
 	{
 		super(context);
-		this.model =
-				new ThrownBrickModel(context.bakeLayer(ThrownBrickModel.LAYER_LOCATION));
+		this.model = new ThrownBrickModel(
+				context.bakeLayer(ThrownBrickModel.LAYER_LOCATION));
 	}
 
 	@Override
-	public void render(ThrownBrickRenderState renderState,
-					   PoseStack poseStack,
-					   MultiBufferSource bufferSource,
-					   int packedLight)
+	public void render(ThrownBrickRenderState renderState, PoseStack poseStack,
+			MultiBufferSource bufferSource, int packedLight)
 	{
 		poseStack.pushPose();
 		poseStack.mulPose(Axis.YP.rotationDegrees(renderState.yRot));
@@ -50,8 +48,7 @@ public class ThrownBrickRenderer
 
 	@Override
 	public void extractRenderState(ThrownBrickEntity pEntity,
-								   ThrownBrickRenderState pState,
-								   float pPartialTick)
+			ThrownBrickRenderState pState, float pPartialTick)
 	{
 		super.extractRenderState(pEntity, pState, pPartialTick);
 		pState.xRot = pEntity.getXRot();

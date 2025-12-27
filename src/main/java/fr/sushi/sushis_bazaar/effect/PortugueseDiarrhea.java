@@ -10,7 +10,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 
 public class PortugueseDiarrhea extends MobEffect
 {
@@ -22,23 +21,16 @@ public class PortugueseDiarrhea extends MobEffect
 	}
 
 	@Override
-	public boolean applyEffectTick(ServerLevel level,
-								   LivingEntity entity,
-								   int amplifier)
+	public boolean applyEffectTick(ServerLevel level, LivingEntity entity,
+			int amplifier)
 	{
 		ItemEntity brickEntity = new ItemEntity(EntityType.ITEM, level);
 		brickEntity.setItem(new ItemStack(ModItems.THROWABLE_BRICK.get()));
 		brickEntity.setPos(entity.position());
 		brickEntity.setPickUpDelay(16);
 		level.addFreshEntity(brickEntity);
-		level.playSound(null,
-						entity.getX(),
-						entity.getY(),
-						entity.getZ(),
-						SoundEvents.MUD_PLACE,
-						SoundSource.PLAYERS,
-						1.0f,
-						0.0f);
+		level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+				SoundEvents.MUD_PLACE, SoundSource.PLAYERS, 1.0f, 0.0f);
 		return true;
 	}
 

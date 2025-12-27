@@ -14,17 +14,19 @@ public class ModEvents
 {
 	@SubscribeEvent
 	@OnlyIn(Dist.CLIENT)
-	public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event)
+	public static void registerRenderers(
+			EntityRenderersEvent.RegisterRenderers event)
 	{
 		event.registerEntityRenderer(ModEntities.THROWN_BRICK_ENTITY.get(),
-									 ThrownBrickRenderer::new);
+				ThrownBrickRenderer::new);
 	}
 
 	@SubscribeEvent
 	@OnlyIn(Dist.CLIENT)
-	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event)
+	public static void registerLayerDefinitions(
+			EntityRenderersEvent.RegisterLayerDefinitions event)
 	{
 		event.registerLayerDefinition(ThrownBrickModel.LAYER_LOCATION,
-									  ThrownBrickModel::createBodyLayer);
+				ThrownBrickModel::createBodyLayer);
 	}
 }
