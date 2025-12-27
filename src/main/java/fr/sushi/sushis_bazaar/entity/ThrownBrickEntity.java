@@ -2,7 +2,11 @@ package fr.sushi.sushis_bazaar.entity;
 
 import fr.sushi.sushis_bazaar.registries.ModEntities;
 import net.minecraft.Util;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -13,6 +17,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
@@ -66,7 +71,20 @@ public class ThrownBrickEntity extends ThrowableProjectile
 		super.onHit(result);
 		if (!this.level().isClientSide())
 		{
-			this.level().broadcastEntityEvent(this, EntityEvent.DEATH);
+			ServerLevel level = (ServerLevel) this.level();
+			level.broadcastEntityEvent(this, EntityEvent.DEATH);
+			ParticleOptions particle =
+					new BlockParticleOption(ParticleTypes.BLOCK,
+											Blocks.BRICKS.defaultBlockState());
+			level.sendParticles(particle,
+								this.getX(),
+								this.getY(),
+								this.getZ(),
+								20,
+								0.2D,
+								0.2D,
+								0.2D,
+								0.15f);
 			this.discard();
 		}
 		this
