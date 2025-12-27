@@ -46,4 +46,6 @@ public class ThrownBrickModel extends EntityModel<ThrownBrickRenderState>
 
 		return LayerDefinition.create(meshdefinition, 32, 32);
 	}
+
+
 }

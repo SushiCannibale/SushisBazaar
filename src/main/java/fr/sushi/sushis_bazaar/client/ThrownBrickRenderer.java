@@ -6,6 +6,7 @@ import com.mojang.math.Axis;
 import fr.sushi.sushis_bazaar.SushisBazaar;
 import fr.sushi.sushis_bazaar.entity.ThrownBrickEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -40,7 +41,7 @@ public class ThrownBrickRenderer
 		poseStack.mulPose(Axis.XP.rotationDegrees(renderState.zRot));
 		this.model.setupAnim(renderState);
 		VertexConsumer buffer =
-				bufferSource.getBuffer(this.model.renderType(TEXTURE));
+				bufferSource.getBuffer(RenderType.entityCutoutNoCull(TEXTURE));
 		this.model.renderToBuffer(poseStack, buffer, packedLight, 0, -1);
 
 		poseStack.popPose();
